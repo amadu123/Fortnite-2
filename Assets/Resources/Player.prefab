@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0e800f7b463fae45a67cf6910657253, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4807246414325066517}
   - component: {fileID: 4807246414325066515}
   - component: {fileID: 889975398389058820}
+  - component: {fileID: 1884078786353543219}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -193,6 +194,14 @@ MonoBehaviour:
   FloorPrefab: {fileID: 6243266214119922808, guid: 3846f09b43627984fbb1bc36e0b3927d, type: 3}
   WallPrefab: {fileID: 8471601250597372904, guid: 99367b1a7c0eaa34f88f05a23368d990, type: 3}
   StairPrefab: {fileID: 7869632478234857469, guid: fd28efe9e76680c47b73a84f4df11010, type: 3}
+--- !u!81 &1884078786353543219
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807246414325066519}
+  m_Enabled: 1
 --- !u!1 &4807246414333977288
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,9 +216,11 @@ GameObject:
   - component: {fileID: 8534131818562613493}
   - component: {fileID: -8624690614374050666}
   - component: {fileID: 7804824017006474635}
+  - component: {fileID: 9008646724633978883}
+  - component: {fileID: 7926751412275840435}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,6 +347,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3c7c6b36315e846ab0c1da79722258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9008646724633978883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807246414333977288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69766b6df38a8834f8f5abaa7482b26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+  playerDamage: 25
+  rayOrigin: {fileID: 4807246414325066514}
+--- !u!114 &7926751412275840435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807246414333977288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2040ab8098359094b9bd16ad8587bb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4807246414393517910
