@@ -11,6 +11,8 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     Text playerCountText;
     [SerializeField]
+    Text roomNameText;
+    [SerializeField]
     Button startButton;
 
     int playerCount;
@@ -23,6 +25,8 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
         }
 
         PlayerCountUpdate();
+
+        roomNameText.text = "Room name: " + PhotonNetwork.CurrentRoom.Name;
     }
 
     void PlayerCountUpdate()
