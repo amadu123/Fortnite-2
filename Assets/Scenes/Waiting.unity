@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7284c8f0c85db4491484801a731df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNamesText: {fileID: 593774871}
   playerCountText: {fileID: 38850447}
   roomNameText: {fileID: 1332937921}
   startButton: {fileID: 935879664}
@@ -312,7 +313,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1

@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class WaitingRoomController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
+    Text playerNamesText;
+    [SerializeField]
     Text playerCountText;
     [SerializeField]
     Text roomNameText;
@@ -16,6 +18,7 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     Button startButton;
 
     int playerCount;
+    string playerNames;
 
     void Start()
     {
@@ -33,6 +36,13 @@ public class WaitingRoomController : MonoBehaviourPunCallbacks
     {
         playerCount = PhotonNetwork.PlayerList.Length;
         playerCountText.text = "Players: " + playerCount;
+
+        playerNames = "Players in room:\n";
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            playerNames += player.NickName + "\n";
+        }
+        playerNamesText.text = playerNames;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
