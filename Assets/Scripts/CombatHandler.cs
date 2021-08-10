@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class CombatHandler : MonoBehaviour
 {
     public int playerHealth;
     public int playerDamage;
     public Transform rayOrigin;
+    public Slider healthBar;
 
     PhotonView PV;
     string combatMode = "Assault Rifle";
@@ -33,12 +35,15 @@ public class CombatHandler : MonoBehaviour
     [PunRPC]
     void RPC_Shooting()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, ~LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer))))
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward));
+        foreach (RaycastHit hit in hits)
         {
-            if (hit.transform.tag == "Player")
+            if (hit.transform.gameObject != gameObject && hit.transform.tag == "Player")
             {
                 hit.transform.gameObject.GetComponent<CombatHandler>().TakeDamage(playerDamage);
+
+                break;
             }
         }
     }
@@ -46,6 +51,7 @@ public class CombatHandler : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
+        healthBar.value = playerHealth;
     }
 
     public void ChangeCombatMode(string mode)

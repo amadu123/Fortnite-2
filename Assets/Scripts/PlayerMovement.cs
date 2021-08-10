@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,11 +16,28 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     Vector3 velocity;
+    PhotonView PV;
     bool isGrounded;
+
+    private void Start()
+    {
+        PV = GetComponent<PhotonView>();
+    }
 
     void Update()
     {
+        if (!PV.IsMine) return;
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded)
+        {
+            controller.stepOffset = 0.3f;
+        }
+        else
+        {
+            controller.stepOffset = 0f;
+        }
 
         if (isGrounded && velocity.y < 0)
         {

@@ -5,6 +5,11 @@ using Photon.Pun;
 
 public class PlayerDisabler : MonoBehaviour
 {
+    [SerializeField]
+    GameObject Camera;
+    [SerializeField]
+    GameObject Canvas;
+
     PhotonView view;
 
     void Awake()
@@ -12,9 +17,9 @@ public class PlayerDisabler : MonoBehaviour
         view = GetComponent<PhotonView>();
         if (!view.IsMine)
         {
-            GetComponent<PlayerMovement>().enabled = false;
-            transform.Find("Main Camera").gameObject.SetActive(false);
-            transform.Find("Main Camera").gameObject.GetComponent<AudioListener>().enabled = false;
+            Camera.GetComponent<Camera>().enabled = false;
+            Camera.GetComponent<AudioListener>().enabled = false;
+            Canvas.SetActive(false);
             gameObject.layer = LayerMask.NameToLayer("Default");
         }
     }

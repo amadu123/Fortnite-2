@@ -9,50 +9,49 @@ public class BuildingHandler : MonoBehaviour
     public float GridSize = 5f;
     public float BuildWidth = 0.2f;
 
-    public Transform FloorOutline;
-    public Transform WallOutline;
-    public Transform StairOutline;
+    public Transform Camera;
+    public Transform OutlinePrefab;
 
     public Transform FloorPrefab;
     public Transform WallPrefab;
     public Transform StairPrefab;
 
-    RaycastHit Hit;
     Transform Outline;
+    PhotonView PV;
     string BuildMode = "None";
 
     private void Start()
     {
-        Outline = Instantiate(FloorOutline);
+        Outline = Instantiate(OutlinePrefab);
+        PV = GetComponent<PhotonView>();
     }
 
     void Update()
     {
+        if (!PV.IsMine) return;
+
         if (BuildMode != "None")
         {
-            if (Physics.Raycast(transform.position, transform.forward, out Hit, BuildDistance, ~LayerMask.GetMask(LayerMask.LayerToName(transform.parent.gameObject.layer))))
+            RaycastHit[] Hits = Physics.RaycastAll(Camera.position, Camera.forward, BuildDistance);
+            foreach (RaycastHit Hit in Hits)
             {
-                Debug.DrawLine(transform.position, Hit.point, Color.green);
+                if (Hit.transform.gameObject != gameObject)
+                {
+                    float BuildX = Mathf.RoundToInt(Hit.point.x / GridSize) * GridSize;
+                    float BuildY = Mathf.RoundToInt(Hit.point.y / GridSize) * GridSize;
+                    float BuildZ = Mathf.RoundToInt(Hit.point.z / GridSize) * GridSize;
+                    Outline.position = new Vector3(BuildX, BuildY, BuildZ);
 
-                Outline.gameObject.SetActive(true);
+                    float BuildRotationY = Mathf.RoundToInt(Camera.eulerAngles.y / 90f) * 90f;
+                    Outline.eulerAngles = new Vector3(0, BuildRotationY, 0);
 
-                float BuildX = Mathf.RoundToInt(Hit.point.x / GridSize) * GridSize;
-                float BuildY = Mathf.RoundToInt(Hit.point.y / GridSize) * GridSize;
-                float BuildZ = Mathf.RoundToInt(Hit.point.z / GridSize) * GridSize;
-                Outline.position = new Vector3(BuildX, BuildY, BuildZ);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Build();
+                    }
 
-                float BuildRotationY = Mathf.RoundToInt(transform.eulerAngles.y / 90f) * 90f;
-                Outline.eulerAngles = new Vector3(0, BuildRotationY, 0);
-
-            }
-            else
-            {
-                Outline.gameObject.SetActive(false);
-            }
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                Build();
+                    break;
+                }
             }
         }
     }
@@ -79,23 +78,23 @@ public class BuildingHandler : MonoBehaviour
 
         if (BuildMode == "Floor")
         {
-            Outline.transform.GetChild(0).localPosition = FloorOutline.transform.GetChild(0).localPosition;
-            Outline.transform.GetChild(0).localRotation = FloorOutline.transform.GetChild(0).localRotation;
-            Outline.transform.GetChild(0).localScale = FloorOutline.transform.GetChild(0).localScale;
+            Outline.transform.GetChild(0).localPosition = FloorPrefab.transform.GetChild(0).localPosition;
+            Outline.transform.GetChild(0).localRotation = FloorPrefab.transform.GetChild(0).localRotation;
+            Outline.transform.GetChild(0).localScale = FloorPrefab.transform.GetChild(0).localScale;
             Outline.gameObject.SetActive(true);
         }
         else if (BuildMode == "Wall")
         {
-            Outline.transform.GetChild(0).localPosition = WallOutline.transform.GetChild(0).localPosition;
-            Outline.transform.GetChild(0).localRotation = WallOutline.transform.GetChild(0).localRotation;
-            Outline.transform.GetChild(0).localScale = WallOutline.transform.GetChild(0).localScale;
+            Outline.transform.GetChild(0).localPosition = WallPrefab.transform.GetChild(0).localPosition;
+            Outline.transform.GetChild(0).localRotation = WallPrefab.transform.GetChild(0).localRotation;
+            Outline.transform.GetChild(0).localScale = WallPrefab.transform.GetChild(0).localScale;
             Outline.gameObject.SetActive(true);
         }
         else if (BuildMode == "Stair")
         {
-            Outline.transform.GetChild(0).localPosition = StairOutline.transform.GetChild(0).localPosition;
-            Outline.transform.GetChild(0).localRotation = StairOutline.transform.GetChild(0).localRotation;
-            Outline.transform.GetChild(0).localScale = StairOutline.transform.GetChild(0).localScale;
+            Outline.transform.GetChild(0).localPosition = StairPrefab.transform.GetChild(0).localPosition;
+            Outline.transform.GetChild(0).localRotation = StairPrefab.transform.GetChild(0).localRotation;
+            Outline.transform.GetChild(0).localScale = StairPrefab.transform.GetChild(0).localScale;
             Outline.gameObject.SetActive(true);
         }
         else if (BuildMode == "None")

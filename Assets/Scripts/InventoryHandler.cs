@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class InventoryHandler : MonoBehaviour
 {
     BuildingHandler buildingHandler;
     CombatHandler combatHandler;
+    PhotonView PV;
 
     void Start()
     {
-        buildingHandler = transform.Find("Main Camera").GetComponent<BuildingHandler>();
+        PV = GetComponent<PhotonView>();
+        buildingHandler = GetComponent<BuildingHandler>();
         combatHandler = GetComponent<CombatHandler>();
     }
 
     void Update()
     {
+        if (!PV.IsMine) return;
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             buildingHandler.ChangeBuildMode("Floor");
