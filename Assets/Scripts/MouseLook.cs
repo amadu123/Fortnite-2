@@ -7,6 +7,7 @@ public class MouseLook : MonoBehaviour
 {
     public float mouseSpeed = 100f;
     public Transform playerBody;
+    public GameObject pausePanel;
     float xRotation = 0f;
     bool gameover = false;
     PhotonView PV;
@@ -31,12 +32,8 @@ public class MouseLook : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            pausePanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (Cursor.lockState != CursorLockMode.Locked) return;
@@ -55,5 +52,11 @@ public class MouseLook : MonoBehaviour
     public void GameOver()
     {
         gameover = true;
+    }
+
+    public void Unpause()
+    {
+        pausePanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

@@ -52,13 +52,16 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
-
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Cursor.lockState == CursorLockMode.Locked)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+            controller.Move(move * speed * Time.deltaTime);
 
+            if (Input.GetButton("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+        }
+            
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
