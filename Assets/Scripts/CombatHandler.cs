@@ -32,6 +32,7 @@ public class CombatHandler : MonoBehaviour
 
     private void Start()
     {
+        //Dead();
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             soloMode = true;
@@ -155,5 +156,10 @@ public class CombatHandler : MonoBehaviour
         {
             VicRoy();
         }
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 }
