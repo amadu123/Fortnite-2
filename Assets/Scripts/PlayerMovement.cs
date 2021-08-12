@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     PhotonView PV;
     bool isGrounded;
+    bool gameOver = false;
 
     private void Start()
     {
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!PV.IsMine) return;
+
+        if (gameOver) return;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -59,5 +62,10 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
     }
 }

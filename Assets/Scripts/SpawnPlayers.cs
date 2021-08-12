@@ -5,10 +5,9 @@ using Photon.Pun;
 
 public class SpawnPlayers : MonoBehaviour
 {
+    public static float worldRadius = 80;
+    public static float spawnY = 150;
     public GameObject playerPrefab;
-
-    public float worldRadius;
-    public float spawnY;
 
     private void Start()
     {

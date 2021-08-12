@@ -465,8 +465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4807246414333977288, guid: b91a7bb2d5ded7442a1beed1899771a9, type: 3}
-  worldRadius: 80
-  spawnY: 150
 --- !u!4 &1383427049
 Transform:
   m_ObjectHideFlags: 0
@@ -475,7 +473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383427047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3575325, y: 0.97896624, z: 2.6293926}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

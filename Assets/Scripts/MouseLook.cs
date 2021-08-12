@@ -1,19 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class MouseLook : MonoBehaviour
 {
     public float mouseSpeed = 100f;
     public Transform playerBody;
     float xRotation = 0f;
+    bool gameover = false;
+    PhotonView PV;
 
     void Start()
     {
+        PV = transform.parent.GetComponent<PhotonView>();
+        if (!PV.IsMine) return;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     void Update()
     {
+        if (!PV.IsMine) return;
+
+        if (gameover && Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (gameover) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -35,5 +50,10 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    public void GameOver()
+    {
+        gameover = true;
     }
 }
