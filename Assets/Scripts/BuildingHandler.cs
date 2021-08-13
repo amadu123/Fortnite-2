@@ -70,6 +70,7 @@ public class BuildingHandler : MonoBehaviour
         {
             PhotonNetwork.Instantiate(StairPrefab.name, Outline.position, Outline.rotation);
         }
+        Debug.Log(BuildMode);
     }
 
     public void ChangeBuildMode(string NewBuildMode)

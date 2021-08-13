@@ -51,7 +51,7 @@ public class CombatHandler : MonoBehaviour
         if (combatMode != "None")
         {
             if (Input.GetMouseButtonDown(0) && !dead)
-            {
+            { 
                 Shoot();
             }
         }
@@ -85,10 +85,22 @@ public class CombatHandler : MonoBehaviour
                 else if (hit.transform.tag == "Destructible")
                 {
                     hit.transform.gameObject.GetComponent<DestructibleObjectHandler>().TakeDamage(playerDamage);
+
+                    if (hit.transform.gameObject.GetComponent<DestructibleObjectHandler>().health <= 0)
+                    {
+                        PV.RPC("RemoveBuild", RpcTarget.All, hit.transform.parent.gameObject.GetPhotonView().ViewID);
+                    }
+
                     break;
                 }
             }
         }
+    }
+
+    [PunRPC]
+    void RemoveBuild(int target)
+    {
+        PhotonView.Find(target).gameObject.SetActive(false);
     }
 
     void Dead()

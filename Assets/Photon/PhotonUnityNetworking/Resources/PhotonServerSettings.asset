@@ -46,6 +46,9 @@ MonoBehaviour:
   - UpdateOthersPlayerCount
   - RemoveSelf
   - ChangeInventoryItem
+  - Build
+  - DestroyBuild
+  - RemoveBuild
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

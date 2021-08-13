@@ -10,9 +10,5 @@ public class DestructibleObjectHandler : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if (health <= 0)
-        {
-            PhotonNetwork.Destroy(transform.parent.gameObject);
-        }
     }
 }
