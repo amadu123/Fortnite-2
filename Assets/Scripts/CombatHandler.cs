@@ -119,6 +119,7 @@ public class CombatHandler : MonoBehaviour
         characterController.enabled = false;
         mouseLook.GameOver();
         playerMovement.GameOver();
+        mouseLook.Unpause();
     }
 
     void VicRoy()
@@ -130,6 +131,7 @@ public class CombatHandler : MonoBehaviour
         placeText.gameObject.SetActive(false);
         mouseLook.GameOver();
         playerMovement.GameOver();
+        mouseLook.Unpause();
     }
 
     [PunRPC]
