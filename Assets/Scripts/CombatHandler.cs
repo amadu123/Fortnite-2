@@ -24,6 +24,7 @@ public class CombatHandler : MonoBehaviour
     public GameObject capsule;
     public CharacterController characterController;
     public Camera cam;
+    public ParticleSystem muzzleFlash;
 
     PhotonView PV;
     string combatMode = "Assault Rifle";
@@ -69,6 +70,8 @@ public class CombatHandler : MonoBehaviour
 
     void Shoot()
     {
+        muzzleFlash.Play();
+
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward));
         foreach (RaycastHit hit in hits)
