@@ -33,7 +33,6 @@ public class CombatHandler : MonoBehaviour
 
     private void Start()
     {
-        //Dead();
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             soloMode = true;
@@ -51,7 +50,7 @@ public class CombatHandler : MonoBehaviour
 
         if (combatMode != "None")
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !dead)
             {
                 Shoot();
             }
@@ -76,11 +75,18 @@ public class CombatHandler : MonoBehaviour
         hits = Physics.RaycastAll(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward));
         foreach (RaycastHit hit in hits)
         {
-            if (hit.transform.gameObject != gameObject && hit.transform.tag == "Player")
+            if (hit.transform.gameObject != gameObject)
             {
-                hit.transform.gameObject.GetComponent<CombatHandler>().PV.RPC("TakeDamage", RpcTarget.All, playerDamage);
-
-                break;
+                if (hit.transform.tag == "Player")
+                {
+                    hit.transform.gameObject.GetComponent<CombatHandler>().PV.RPC("TakeDamage", RpcTarget.All, playerDamage);
+                    break;
+                }
+                else if (hit.transform.tag == "Destructible")
+                {
+                    hit.transform.gameObject.GetComponent<DestructibleObjectHandler>().TakeDamage(playerDamage);
+                    break;
+                }
             }
         }
     }
@@ -105,6 +111,7 @@ public class CombatHandler : MonoBehaviour
 
     void VicRoy()
     {
+        dead = true;
         alivePanel.SetActive(false);
         deadPanel.SetActive(true);
         victoryRoyale.SetActive(true);

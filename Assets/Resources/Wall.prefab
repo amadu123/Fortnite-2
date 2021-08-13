@@ -332,9 +332,10 @@ GameObject:
   - component: {fileID: 5855804338572715797}
   - component: {fileID: 6523521223391289505}
   - component: {fileID: 1909744964617696103}
+  - component: {fileID: 8959939852377278670}
   m_Layer: 6
   m_Name: Wall Cube
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -442,6 +443,19 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 1003
   isRuntimeInstantiated: 1
+--- !u!114 &8959939852377278670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813386057011253958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec4244ba06d66a47a5956c9381a8d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
 --- !u!1 &7361685635736068938
 GameObject:
   m_ObjectHideFlags: 0

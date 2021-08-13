@@ -26,26 +26,47 @@ public class InventoryHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
+            PV.RPC("ChangeInventoryItem", RpcTarget.All, "Floor");
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))
+        {
+            PV.RPC("ChangeInventoryItem", RpcTarget.All, "Wall");
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            PV.RPC("ChangeInventoryItem", RpcTarget.All, "Stair");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PV.RPC("ChangeInventoryItem", RpcTarget.All, "Assault Rifle");
+        }
+    }
+
+    [PunRPC]
+    void ChangeInventoryItem(string item)
+    {
+        if (item == "Floor")
+        {
             buildingHandler.ChangeBuildMode("Floor");
             combatHandler.ChangeCombatMode("None");
             gun.SetActive(false);
             blueprint.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.F2))
+        else if (item == "Wall")
         {
             buildingHandler.ChangeBuildMode("Wall");
             combatHandler.ChangeCombatMode("None");
             gun.SetActive(false);
             blueprint.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.F3))
+        else if (item == "Stair")
         {
             buildingHandler.ChangeBuildMode("Stair");
             combatHandler.ChangeCombatMode("None");
             gun.SetActive(false);
             blueprint.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        else if (item == "Assault Rifle")
         {
             buildingHandler.ChangeBuildMode("None");
             combatHandler.ChangeCombatMode("Assault Rifle");

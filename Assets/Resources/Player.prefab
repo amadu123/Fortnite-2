@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 107380242212273084}
   - component: {fileID: 7859433262822107333}
   - component: {fileID: 8057895271810506485}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Fire_Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 6246698186099613951}
   - component: {fileID: 1512284653663800417}
   - component: {fileID: 7931808690816445473}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Dust_Cover_Mount_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 189444580123624544}
   - component: {fileID: 4492506123014968968}
   - component: {fileID: 2774910933798201870}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 8764330157191653418}
   - component: {fileID: 8101298064171910208}
   - component: {fileID: 6221778047369331980}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 5842884208492878717}
   - component: {fileID: 943423144720742056}
   - component: {fileID: 3635875750496469560}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Dust_Cover_Mount_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 394725708247240382}
   - component: {fileID: 5397527847862776003}
   - component: {fileID: 1428283674266726837}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Rifle_Body_AR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 1272633716091582941}
   - component: {fileID: 1736789818267860585}
   - component: {fileID: 8427004024477495533}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Charging_Handle_Action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 1749948976830697355}
   - component: {fileID: 9036263792185414249}
   - component: {fileID: 5413543250453094502}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Receiver_Side_Groove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 7924972411228119162}
   - component: {fileID: 5805565414567169549}
   - component: {fileID: 3213351882231434984}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,80 +1164,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &929376614951040943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1834223391764786435}
-  - component: {fileID: 5360895526779479992}
-  m_Layer: 0
-  m_Name: Gun Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1834223391764786435
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929376614951040943}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4807246414325066514}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &5360895526779479992
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929376614951040943}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 8
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &961062334727319165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1175,7 @@ GameObject:
   - component: {fileID: 6747542295988964924}
   - component: {fileID: 4159482206045245714}
   - component: {fileID: 763826317462175683}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Buffer_Tube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,7 +1255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398192469168684598}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1289,7 @@ GameObject:
   - component: {fileID: 8035175655811704843}
   - component: {fileID: 4744513745783827883}
   - component: {fileID: 4057908293170350359}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Handguard_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1653,7 +1579,7 @@ GameObject:
   - component: {fileID: 8181076973791589094}
   - component: {fileID: 7493637025729840435}
   - component: {fileID: 8178600863660596610}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Full_Auto_Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1733,7 +1659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2773650765630630515}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Handguards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1766,7 +1692,7 @@ GameObject:
   - component: {fileID: 1937956124300356307}
   - component: {fileID: 1907860633524605738}
   - component: {fileID: 2543413392899587260}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Body_Carry_Handle_Built_in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1847,7 +1773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684502991710372799}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1881,7 +1807,7 @@ GameObject:
   - component: {fileID: 8230495115723842076}
   - component: {fileID: 5812728740487962047}
   - component: {fileID: 1191379115427259110}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Brass_Deflector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6827,7 +6753,7 @@ GameObject:
   - component: {fileID: 6371267739229069775}
   - component: {fileID: 7244522614738505668}
   - component: {fileID: 2355558036071495326}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Rifle_Bolt_AR_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6907,7 +6833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015967407294368643}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Body_Parts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6963,7 +6889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4353139645266858348}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Pistol_Grips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6996,7 +6922,7 @@ GameObject:
   - component: {fileID: 5080264098923187938}
   - component: {fileID: 7153462814561248794}
   - component: {fileID: 8164583020088587816}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Handguard_Body_Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7153,7 +7079,7 @@ GameObject:
   - component: {fileID: 1402443115708940876}
   - component: {fileID: 7407288018180394234}
   - component: {fileID: 6872873059953143367}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_Release
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7572,7 +7498,7 @@ GameObject:
   - component: {fileID: 2097533428863970521}
   - component: {fileID: 9185770345143431361}
   - component: {fileID: 747585574311411942}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Dust_Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7654,7 +7580,7 @@ GameObject:
   - component: {fileID: 7286402948439713589}
   - component: {fileID: 8972383080764087387}
   - component: {fileID: 105440180243041484}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7919,7 +7845,6 @@ Transform:
   m_Children:
   - {fileID: 398192469168684598}
   - {fileID: 8101520264838977262}
-  - {fileID: 1834223391764786435}
   m_Father: {fileID: 4807246414333977302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7951,7 +7876,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -2
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967287
@@ -8246,7 +8171,7 @@ GameObject:
   - component: {fileID: 5398468517537614224}
   - component: {fileID: 3309517432213481165}
   - component: {fileID: 2570427924182324036}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Trigger_Guard_Bottom_straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8328,7 +8253,7 @@ GameObject:
   - component: {fileID: 1010845838487409262}
   - component: {fileID: 2527766634184088584}
   - component: {fileID: 4340813493251196429}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Stock_Collapsable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8485,7 +8410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3210405904109840030}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Barrels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8518,7 +8443,7 @@ GameObject:
   - component: {fileID: 8008660793721689077}
   - component: {fileID: 4511865069345331160}
   - component: {fileID: 6865557105623724619}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Ejector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8598,7 +8523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5119393175375872741}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Car_15_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8637,7 +8562,7 @@ GameObject:
   - component: {fileID: 5666416530767001778}
   - component: {fileID: 4503373138438050205}
   - component: {fileID: 4062507419558934943}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8719,7 +8644,7 @@ GameObject:
   - component: {fileID: 6327709071246981399}
   - component: {fileID: 5427682864725845866}
   - component: {fileID: 8166346358334011349}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Stock_Adjustor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8801,7 +8726,7 @@ GameObject:
   - component: {fileID: 7495993303254724116}
   - component: {fileID: 4154404209449226913}
   - component: {fileID: 7726307006878763276}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Flashhider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8883,7 +8808,7 @@ GameObject:
   - component: {fileID: 5723724379863102758}
   - component: {fileID: 5489758690315272513}
   - component: {fileID: 4228805639939119040}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Indent_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8965,7 +8890,7 @@ GameObject:
   - component: {fileID: 7704641543667561330}
   - component: {fileID: 6042049824328140363}
   - component: {fileID: 6403709003406763804}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Charging_Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9180,7 +9105,7 @@ GameObject:
   - component: {fileID: 5339946620028630328}
   - component: {fileID: 7887619126975586803}
   - component: {fileID: 8428835078941830077}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sight_Adjuster_A2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9262,7 +9187,7 @@ GameObject:
   - component: {fileID: 4712152469603012417}
   - component: {fileID: 1487869055504259896}
   - component: {fileID: 3763150788457991307}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Magazine_30_Round
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9344,7 +9269,7 @@ GameObject:
   - component: {fileID: 3841798583981448172}
   - component: {fileID: 5909256258804797725}
   - component: {fileID: 8038796311125459937}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Barrel_14_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9427,7 +9352,7 @@ GameObject:
   - component: {fileID: 7689801113122999654}
   - component: {fileID: 553329709883893169}
   - component: {fileID: 164181486720641364}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Front_Sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9590,7 +9515,7 @@ GameObject:
   - component: {fileID: 4311970676956692620}
   - component: {fileID: 2798719237528222976}
   - component: {fileID: 4657748909544868002}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9799,7 +9724,7 @@ GameObject:
   - component: {fileID: 695382918711723914}
   - component: {fileID: 2812738276331604372}
   - component: {fileID: 9183267699356129774}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Safe_Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9881,7 +9806,7 @@ GameObject:
   - component: {fileID: 406515802838055134}
   - component: {fileID: 7993585573171368402}
   - component: {fileID: 644257247359293563}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Magazine_Release
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9962,7 +9887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8101520264838977262}
   - component: {fileID: 2309054405620992890}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Blueprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10046,7 +9971,7 @@ GameObject:
   - component: {fileID: 3712790000327956725}
   - component: {fileID: 2939347095673016342}
   - component: {fileID: 6278089911443950705}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Handguard_Car_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10129,7 +10054,7 @@ GameObject:
   - component: {fileID: 1491979835178080500}
   - component: {fileID: 460988354879040510}
   - component: {fileID: 7554884406112977566}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Trigger_Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10211,7 +10136,7 @@ GameObject:
   - component: {fileID: 5513560715848543718}
   - component: {fileID: 8049305611440575422}
   - component: {fileID: 1533916967656658414}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10291,7 +10216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5169757568345289253}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Stocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10325,7 +10250,7 @@ GameObject:
   - component: {fileID: 9120378745834649125}
   - component: {fileID: 1906528910746588581}
   - component: {fileID: 8208136366514830653}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Ejector_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10407,7 +10332,7 @@ GameObject:
   - component: {fileID: 5107928730087278554}
   - component: {fileID: 3713428104257757857}
   - component: {fileID: 8722557916442393951}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10489,7 +10414,7 @@ GameObject:
   - component: {fileID: 7617574866312034937}
   - component: {fileID: 8651303500333638756}
   - component: {fileID: 3662890292824753169}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Stock_Adjuster_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10571,7 +10496,7 @@ GameObject:
   - component: {fileID: 2162996798764901328}
   - component: {fileID: 5375558793066961620}
   - component: {fileID: 5173346752201840840}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bolt_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10653,7 +10578,7 @@ GameObject:
   - component: {fileID: 7731446548906953101}
   - component: {fileID: 1230844411930023405}
   - component: {fileID: 988862994026047061}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sling_Ring_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
