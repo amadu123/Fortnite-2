@@ -12,24 +12,9 @@ public class ManagePlayers : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsMasterClient) return;
 
         Hashtable setProps = new Hashtable();
-        setProps.Add("playerCount", 1);
+        setProps.Add("playerCount", (int)PhotonNetwork.CurrentRoom.PlayerCount);
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(setProps, null, null);
-    }
-
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        if (!PhotonNetwork.IsMasterClient) return;
-
-        int prevPlayerCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"];
-
-        Hashtable setProps = new Hashtable();
-        setProps.Add("playerCount", prevPlayerCount + 1);
-
-        Hashtable expectedProps = new Hashtable();
-        expectedProps.Add("playerCount", prevPlayerCount);
-
-        PhotonNetwork.CurrentRoom.SetCustomProperties(setProps, expectedProps, null);
     }
 
     public override void OnPlayerLeftRoom(Player newPlayer)

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using Photon.Realtime;
 
-public class CombatHandler : MonoBehaviour
+public class CombatHandler : MonoBehaviourPunCallbacks
 {
     public int lives = 5;
     public int maxHealth = 100;
@@ -53,9 +54,15 @@ public class CombatHandler : MonoBehaviour
             }
         }
 
-        if (PhotonNetwork.CurrentRoom.CustomProperties["playerCount"] != null)
+        object playerCount = PhotonNetwork.CurrentRoom.CustomProperties["playerCount"];
+        if (playerCount != null)
         {
-            playerCountText.text = "Players left: " + ((int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"]).ToString();
+            playerCountText.text = "Players left: " + ((int)playerCount).ToString();
+
+            if ((int)playerCount == 1 && !soloMode)
+            {
+                VicRoy();
+            }
         }
     }
     public void ChangeCombatMode(string mode)
@@ -118,7 +125,7 @@ public class CombatHandler : MonoBehaviour
         mouseLook.Unpause();
     }
 
-    void VicRoy()
+    public void VicRoy()
     {
         alivePanel.SetActive(false);
         deadPanel.SetActive(true);

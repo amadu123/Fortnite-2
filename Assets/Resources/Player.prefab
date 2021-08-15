@@ -8065,7 +8065,6 @@ MonoBehaviour:
   maxHealth: 1
   playerHealth: 1
   playerDamage: 10
-  playerCount: 0
   rayOrigin: {fileID: 4807246414325066514}
   healthBar: {fileID: 4299808488465602654}
   playerCountText: {fileID: 1681864331}
