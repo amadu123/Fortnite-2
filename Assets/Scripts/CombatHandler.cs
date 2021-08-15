@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 
-public class CombatHandler : MonoBehaviour
+public class CombatHandler : MonoBehaviourPunCallbacks
 {
     public int lives = 5;
     public int maxHealth = 100;
@@ -184,6 +184,12 @@ public class CombatHandler : MonoBehaviour
 
     public void LeaveRoom()
     {
+        if (!dead) PV.RPC("UpdateOthersPlayerCount", RpcTarget.All, -1, false);
         PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        UpdatePlayerCount(-1, false);
     }
 }
