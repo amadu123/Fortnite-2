@@ -4,13 +4,12 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 
-public class CombatHandler : MonoBehaviourPunCallbacks
+public class CombatHandler : MonoBehaviour
 {
     public int lives = 5;
     public int maxHealth = 100;
     public int playerHealth = 100;
     public int playerDamage = 10;
-    public int playerCount = 0;
     public Transform rayOrigin;
     public Slider healthBar;
     public Text playerCountText;
@@ -29,7 +28,6 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     PhotonView PV;
     string combatMode = "Assault Rifle";
     bool soloMode = false;
-    bool dead = false;
 
     private void Start()
     {
@@ -49,10 +47,15 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
         if (combatMode != "None")
         {
-            if (Input.GetMouseButtonDown(0) && !dead)
+            if (Input.GetMouseButtonDown(0))
             { 
                 Shoot();
             }
+        }
+
+        if (PhotonNetwork.CurrentRoom.CustomProperties["playerCount"] != null)
+        {
+            playerCountText.text = "Players left: " + ((int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"]).ToString();
         }
     }
     public void ChangeCombatMode(string mode)
@@ -104,16 +107,10 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
     void Dead()
     {
-        dead = true;
         alivePanel.SetActive(false);
         deadPanel.SetActive(true);
         victoryRoyale.SetActive(false);
         placeText.gameObject.SetActive(true);
-
-        placeText.text = "You placed: " + playerCount + "th";
-
-        PV.RPC("UpdateOthersPlayerCount", RpcTarget.All, -1, false, PV.Owner.UserId);
-
         capsule.SetActive(false);
         characterController.enabled = false;
         mouseLook.GameOver();
@@ -123,7 +120,6 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
     void VicRoy()
     {
-        dead = true;
         alivePanel.SetActive(false);
         deadPanel.SetActive(true);
         victoryRoyale.SetActive(true);
@@ -152,6 +148,5 @@ public class CombatHandler : MonoBehaviourPunCallbacks
                 Spawn();
             }
         }
-
     }
 }
