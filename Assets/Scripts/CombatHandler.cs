@@ -41,7 +41,6 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
         PV = GetComponent<PhotonView>();
         playerHealth = maxHealth;
-        UpdateOthersPlayerCount(1, true);
     }
 
     private void Update()
@@ -113,7 +112,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
         placeText.text = "You placed: " + playerCount + "th";
 
-        UpdateOthersPlayerCount(-1, false);
+        PV.RPC("UpdateOthersPlayerCount", RpcTarget.All, -1, false, PV.Owner.UserId);
 
         capsule.SetActive(false);
         characterController.enabled = false;
@@ -154,42 +153,5 @@ public class CombatHandler : MonoBehaviourPunCallbacks
             }
         }
 
-    }
-
-    [PunRPC]
-    void UpdateOthersPlayerCount(int playersChanged, bool start)
-    {
-        PhotonView[] photonViews = FindObjectsOfType<PhotonView>();
-        foreach (PhotonView view in photonViews)
-        {
-            var player = view.Owner;
-
-            if (player != null)
-            {
-                CombatHandler combatHandler = view.gameObject.GetComponent<CombatHandler>();
-                if (combatHandler != null) combatHandler.UpdatePlayerCount(playersChanged, start);
-            }
-        }
-    }
-
-    public void UpdatePlayerCount(int playersChanged, bool start)
-    {
-        playerCount += playersChanged;
-        playerCountText.text = "Players left: " + playerCount;
-        if(playerCount == 1 && !soloMode && !start && !dead)
-        {
-            VicRoy();
-        }
-    }
-
-    public void LeaveRoom()
-    {
-        if (!dead) PV.RPC("UpdateOthersPlayerCount", RpcTarget.All, -1, false);
-        PhotonNetwork.LeaveRoom();
-    }
-
-    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-    {
-        UpdatePlayerCount(-1, false);
     }
 }
