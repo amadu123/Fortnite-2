@@ -68,6 +68,17 @@ public class CombatHandler : MonoBehaviourPunCallbacks
                 VicRoy();
             }
         }
+
+        if (transform.position.y < -50)
+        {
+            if (soloMode)
+            {
+                Spawn();
+            } else
+            {
+                Dead();
+            }
+        }
     }
 
     public void ChangeCombatMode(string mode)
