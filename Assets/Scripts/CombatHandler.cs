@@ -83,7 +83,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
     void Shoot()
     {
-        muzzleFlash.Play();
+        PV.RPC("PlayMuzzleFlash", RpcTarget.All);
 
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward));
@@ -109,6 +109,12 @@ public class CombatHandler : MonoBehaviourPunCallbacks
                 }
             }
         }
+    }
+
+    [PunRPC]
+    void PlayMuzzleFlash()
+    {
+        muzzleFlash.Play();
     }
 
     [PunRPC]
