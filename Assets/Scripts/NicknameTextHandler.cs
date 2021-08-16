@@ -16,6 +16,9 @@ public class NicknameTextHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Camera.main.transform);
+        if (Camera.main.transform != null)
+        {
+            transform.LookAt(Camera.main.transform);
+        }
     }
 }
