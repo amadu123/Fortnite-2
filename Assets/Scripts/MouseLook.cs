@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour
     public float mouseSpeed = 100f;
     public Transform playerBody;
     public GameObject pausePanel;
+    public GameObject livePanel;
     float xRotation = 0f;
     PhotonView PV;
     bool pausingDisabled = false;
@@ -26,6 +27,7 @@ public class MouseLook : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && !pausingDisabled)
         {
             pausePanel.SetActive(true);
+            livePanel.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
         }
 
@@ -46,6 +48,7 @@ public class MouseLook : MonoBehaviour
     public void Unpause()
     {
         pausePanel.SetActive(false);
+        livePanel.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
