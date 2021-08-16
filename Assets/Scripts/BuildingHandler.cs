@@ -11,10 +11,10 @@ public class BuildingHandler : MonoBehaviour
 
     public Transform Camera;
     public Transform OutlinePrefab;
-
     public Transform FloorPrefab;
     public Transform WallPrefab;
     public Transform StairPrefab;
+    public AudioSource buildSound;
 
     Transform Outline;
     PhotonView PV;
@@ -58,6 +58,8 @@ public class BuildingHandler : MonoBehaviour
 
     void Build()
     {
+        PV.RPC("BuildSound", RpcTarget.All);
+
         if (BuildMode == "Floor")
         {
             PhotonNetwork.Instantiate(FloorPrefab.name, Outline.position, Outline.rotation);
@@ -70,7 +72,12 @@ public class BuildingHandler : MonoBehaviour
         {
             PhotonNetwork.Instantiate(StairPrefab.name, Outline.position, Outline.rotation);
         }
-        Debug.Log(BuildMode);
+    }
+
+    [PunRPC]
+    void BuildSound()
+    {
+        buildSound.Play();
     }
 
     public void ChangeBuildMode(string NewBuildMode)
