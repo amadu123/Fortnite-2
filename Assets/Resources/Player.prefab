@@ -1733,6 +1733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeText: {fileID: 0}
+  combatHandler: {fileID: 9008646724633978883}
 --- !u!1 &1561431662758841007
 GameObject:
   m_ObjectHideFlags: 0
@@ -8180,6 +8181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeText: {fileID: 0}
+  combatHandler: {fileID: 9008646724633978883}
 --- !u!1 &4290109299833216403
 GameObject:
   m_ObjectHideFlags: 0
@@ -9078,6 +9080,7 @@ MonoBehaviour:
   alivePanel: {fileID: 4022360181333479029}
   gunshotSound: {fileID: 4697257705439564610}
   livesText: {fileID: 8633096050027343473}
+  PV: {fileID: 0}
 --- !u!114 &7926751412275840435
 MonoBehaviour:
   m_ObjectHideFlags: 0

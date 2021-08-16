@@ -30,7 +30,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     public AudioSource gunshotSound;
     public Text livesText;
 
-    PhotonView PV;
+    public PhotonView PV;
     string combatMode = "Assault Rifle";
     bool soloMode = false;
 

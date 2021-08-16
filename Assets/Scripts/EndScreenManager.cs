@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class EndScreenManager : MonoBehaviour
 {
     public Text placeText;
+    public CombatHandler combatHandler;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class EndScreenManager : MonoBehaviour
 
     public void LeaveRoom()
     {
+        if (combatHandler != null)
+        {
+            combatHandler.PV.RPC("RemovePlayer", RpcTarget.All);
+        }
         PhotonNetwork.LeaveRoom();
     }
 }

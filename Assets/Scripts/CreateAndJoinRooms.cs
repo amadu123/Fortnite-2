@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
@@ -13,7 +14,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         if (!string.IsNullOrEmpty(createInput.text))
         {
-            PhotonNetwork.CreateRoom(createInput.text);
+            Photon.Realtime.RoomOptions setProps = new Photon.Realtime.RoomOptions();
+            setProps.CleanupCacheOnLeave = false;
+
+            PhotonNetwork.CreateRoom(createInput.text, setProps);
         }
     }
 
