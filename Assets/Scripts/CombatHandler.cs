@@ -16,7 +16,6 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     public Slider healthBar;
     public Text playerCountText;
     public Text soloText;
-    public Text placeText;
     public MouseLook mouseLook;
     public PlayerMovement playerMovement;
     public GameObject capsule;
