@@ -21,6 +21,8 @@ public class ManagePlayers : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
+        if ((bool)newPlayer.CustomProperties["alive"]) return;
+
         int prevPlayerCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"];
 
         Hashtable setProps = new Hashtable();

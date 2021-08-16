@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class CombatHandler : MonoBehaviourPunCallbacks
 {
@@ -15,16 +16,18 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     public Slider healthBar;
     public Text playerCountText;
     public Text soloText;
-    public GameObject alivePanel;
-    public GameObject deadPanel;
-    public GameObject victoryRoyale;
     public Text placeText;
     public MouseLook mouseLook;
     public PlayerMovement playerMovement;
     public GameObject capsule;
+    public GameObject gun;
+    public GameObject blueprint;
     public CharacterController characterController;
     public Camera cam;
     public ParticleSystem muzzleFlash;
+    public Camera deathCam;
+    public GameObject victoryPanel;
+    public GameObject alivePanel;
 
     PhotonView PV;
     string combatMode = "Assault Rifle";
@@ -40,6 +43,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
         PV = GetComponent<PhotonView>();
         playerHealth = maxHealth;
+        ChangePlayerProperty("alive", true);
     }
 
     private void Update()
@@ -48,7 +52,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
         if (combatMode != "None")
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.Locked)
             { 
                 Shoot();
             }
@@ -65,6 +69,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
             }
         }
     }
+
     public void ChangeCombatMode(string mode)
     {
         combatMode = mode;
@@ -112,33 +117,39 @@ public class CombatHandler : MonoBehaviourPunCallbacks
         PhotonView.Find(target).gameObject.SetActive(false);
     }
 
+    [PunRPC]
+    void RemovePlayer()
+    {
+        Destroy(gameObject);
+    }
+
     void Dead()
     {
-        alivePanel.SetActive(false);
-        deadPanel.SetActive(true);
-        victoryRoyale.SetActive(false);
-        placeText.gameObject.SetActive(true);
-        capsule.SetActive(false);
-        characterController.enabled = false;
-        mouseLook.GameOver();
-        playerMovement.GameOver();
+        cam.GetComponent<AudioListener>().enabled = false;
+        Instantiate(deathCam, cam.transform.position, cam.transform.rotation);
+        ChangePlayerProperty("alive", false);
+        DecreasePlayerCount();
         mouseLook.Unpause();
+        mouseLook.DisablePausing();
+        Cursor.lockState = CursorLockMode.None;
+
+        PV.RPC("RemovePlayer", RpcTarget.All);
     }
 
     public void VicRoy()
     {
         alivePanel.SetActive(false);
-        deadPanel.SetActive(true);
-        victoryRoyale.SetActive(true);
-        placeText.gameObject.SetActive(false);
-        mouseLook.GameOver();
-        playerMovement.GameOver();
+        victoryPanel.SetActive(true);
         mouseLook.Unpause();
+        mouseLook.DisablePausing();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     [PunRPC]
     public void TakeDamage(int damage)
     {
+        if (!PV.IsMine) return;
+
         playerHealth -= damage;
         healthBar.value = playerHealth;
 
@@ -155,5 +166,27 @@ public class CombatHandler : MonoBehaviourPunCallbacks
                 Spawn();
             }
         }
+    }
+
+
+
+    void DecreasePlayerCount()
+    {
+        int prevPlayerCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"];
+
+        Hashtable setProps = new Hashtable();
+        setProps.Add("playerCount", prevPlayerCount - 1);
+
+        Hashtable expectedProps = new Hashtable();
+        expectedProps.Add("playerCount", prevPlayerCount);
+
+        PhotonNetwork.CurrentRoom.SetCustomProperties(setProps, expectedProps, null);
+    }
+
+    void ChangePlayerProperty(string key, bool value)
+    {
+        Hashtable setProps = new Hashtable();
+        setProps.Add(key, value);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(setProps, null, null);
     }
 }
