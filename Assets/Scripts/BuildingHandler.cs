@@ -33,6 +33,7 @@ public class BuildingHandler : MonoBehaviour
         if (BuildMode != "None")
         {
             RaycastHit[] Hits = Physics.RaycastAll(Camera.position, Camera.forward, BuildDistance);
+            System.Array.Sort(Hits, (x, y) => x.distance.CompareTo(y.distance));
             foreach (RaycastHit Hit in Hits)
             {
                 if (Hit.transform.gameObject != gameObject)

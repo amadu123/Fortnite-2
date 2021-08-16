@@ -87,6 +87,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward));
+        System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
         foreach (RaycastHit hit in hits)
         {
             if (hit.transform.gameObject != gameObject)
