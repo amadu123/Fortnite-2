@@ -168,8 +168,6 @@ public class CombatHandler : MonoBehaviourPunCallbacks
         }
     }
 
-
-
     void DecreasePlayerCount()
     {
         int prevPlayerCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"];

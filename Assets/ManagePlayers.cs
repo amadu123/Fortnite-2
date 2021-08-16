@@ -21,7 +21,7 @@ public class ManagePlayers : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        if ((bool)newPlayer.CustomProperties["alive"]) return;
+        if (!(bool)newPlayer.CustomProperties["alive"]) return;
 
         int prevPlayerCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["playerCount"];
 
@@ -32,5 +32,10 @@ public class ManagePlayers : MonoBehaviourPunCallbacks
         expectedProps.Add("playerCount", prevPlayerCount);
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(setProps, expectedProps, null);
+    }
+
+    public override void OnLeftRoom()
+    {
+        PhotonNetwork.LoadLevel("Lobby");
     }
 }
