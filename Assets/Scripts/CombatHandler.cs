@@ -28,6 +28,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     public GameObject victoryPanel;
     public GameObject alivePanel;
     public AudioSource gunshotSound;
+    public Text livesText;
 
     PhotonView PV;
     string combatMode = "Assault Rifle";
@@ -44,6 +45,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
         PV = GetComponent<PhotonView>();
         playerHealth = maxHealth;
         ChangePlayerProperty("alive", true);
+        livesText.text = "Lives: " + lives;
     }
 
     private void Update()
@@ -176,6 +178,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
         {
             playerHealth = maxHealth;
             lives--;
+            livesText.text = "Lives: " + lives;
             if (lives <= 0)
             {
                 Dead();
