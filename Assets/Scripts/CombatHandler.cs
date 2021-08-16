@@ -28,6 +28,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     public Camera deathCam;
     public GameObject victoryPanel;
     public GameObject alivePanel;
+    public AudioSource gunshotSound;
 
     PhotonView PV;
     string combatMode = "Assault Rifle";
@@ -83,7 +84,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
 
     void Shoot()
     {
-        PV.RPC("PlayMuzzleFlash", RpcTarget.All);
+        PV.RPC("PlayGunShot", RpcTarget.All);
 
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin.position, rayOrigin.TransformDirection(Vector3.forward));
@@ -112,9 +113,10 @@ public class CombatHandler : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void PlayMuzzleFlash()
+    void PlayGunShot()
     {
         muzzleFlash.Play();
+        gunshotSound.Play();
     }
 
     [PunRPC]
