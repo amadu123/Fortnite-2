@@ -12,8 +12,8 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        //Vector3 randomPosition = new Vector3(Random.Range(-worldRadius, worldRadius), spawnY, Random.Range(-worldRadius, worldRadius));
-        Vector3 randomPosition = new Vector3(0, spawnY, 0);
+        Vector3 randomPosition = new Vector3(Random.Range(-worldRadius, worldRadius), spawnY, Random.Range(-worldRadius, worldRadius));
+        //Vector3 randomPosition = new Vector3(0, spawnY, 0);
         PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
     }
 }

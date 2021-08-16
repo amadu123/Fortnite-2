@@ -177,6 +177,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
         if (playerHealth <= 0)
         {
             playerHealth = maxHealth;
+            healthBar.value = playerHealth;
             lives--;
             livesText.text = "Lives: " + lives;
             if (lives <= 0)
@@ -186,6 +187,7 @@ public class CombatHandler : MonoBehaviourPunCallbacks
             else
             {
                 Spawn();
+
             }
         }
     }

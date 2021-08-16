@@ -9057,9 +9057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69766b6df38a8834f8f5abaa7482b26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 1
-  maxHealth: 1
-  playerHealth: 1
+  lives: 5
+  maxHealth: 100
+  playerHealth: 100
   playerDamage: 10
   rayOrigin: {fileID: 4807246414325066514}
   healthBar: {fileID: 4299808488465602654}
