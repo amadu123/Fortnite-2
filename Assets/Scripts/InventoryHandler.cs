@@ -24,15 +24,15 @@ public class InventoryHandler : MonoBehaviour
     {
         if (!PV.IsMine) return;
 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             PV.RPC("ChangeInventoryItem", RpcTarget.All, "Floor");
         }
-        else if (Input.GetKeyDown(KeyCode.F2))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             PV.RPC("ChangeInventoryItem", RpcTarget.All, "Wall");
         }
-        else if (Input.GetKeyDown(KeyCode.F3))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             PV.RPC("ChangeInventoryItem", RpcTarget.All, "Stair");
         }
