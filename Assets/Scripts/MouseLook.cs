@@ -12,23 +12,26 @@ public class MouseLook : MonoBehaviour
     float xRotation = 0f;
     PhotonView PV;
     bool pausingDisabled = false;
+    bool paused = false;
 
     void Start()
     {
         PV = transform.parent.GetComponent<PhotonView>();
         if (!PV.IsMine) return;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         if (!PV.IsMine) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !pausingDisabled)
+        if (Input.GetMouseButtonDown(0) && !paused && Cursor.lockState != CursorLockMode.Locked)
         {
-            pausePanel.SetActive(true);
-            livePanel.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O) && !pausingDisabled)
+        {
+            Pause();
         }
 
         if (Cursor.lockState == CursorLockMode.Locked)
@@ -42,14 +45,21 @@ public class MouseLook : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.up * mouseX);
         }
+    }
 
+    public void Pause()
+    {
+        paused = true;
+        pausePanel.SetActive(true);
+        livePanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Unpause()
     {
+        paused = false;
         pausePanel.SetActive(false);
         livePanel.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void DisablePausing()

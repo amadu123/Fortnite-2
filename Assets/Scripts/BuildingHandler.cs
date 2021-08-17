@@ -46,7 +46,7 @@ public class BuildingHandler : MonoBehaviour
                     float BuildRotationY = Mathf.RoundToInt(Camera.eulerAngles.y / 90f) * 90f;
                     Outline.eulerAngles = new Vector3(0, BuildRotationY, 0);
 
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.Locked)
                     {
                         Build();
                     }
