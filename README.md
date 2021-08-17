@@ -1,8 +1,8 @@
 ![Preview](fortnite-2-preview.gif)
 # Fortnite 2
 Play it in your browser here: https://edz123.itch.io/fortnite-2  
-An online multiplayer recreation of Fortnite in Unity! 
-My first online multiplayer Unity game
+An online multiplayer recreation of Fortnite in Unity!   
+My first online multiplayer Unity game  
 You can open it in 2 tabs to test it out
 
 ## How to play
